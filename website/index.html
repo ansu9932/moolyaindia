@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moolya India Private Limited — Diversified Excellence, Unified Vision</title>
+  <meta name="description" content="Moolya India Private Limited is a certified multi-division enterprise delivering excellence across spiritual products, astrology, garments, digital marketing and government tender services. Incorporated 2024, registered in West Bengal." />
+  <meta name="theme-color" content="#0E4D60" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Moolya India Private Limited" />
+  <meta property="og:description" content="Diversified Excellence, Unified Vision — a certified multi-division enterprise." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.moolyaindiapvtltd.com" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              DEFAULT: '#0E4D60',
+              light: '#1B6B82',
+              dark: '#093744',
+            },
+            gold: {
+              DEFAULT: '#C9A227',
+              light: '#E4C25B',
+              soft: '#F3E9C6',
+            },
+            ink: '#0B1F26',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+          },
+          boxShadow: {
+            soft: '0 10px 40px -12px rgba(14,77,96,0.18)',
+            gold: '0 8px 30px -8px rgba(201,162,39,0.45)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Hero radial / mesh background */
+    .hero-mesh {
+      background:
+        radial-gradient(60% 80% at 15% 10%, rgba(201,162,39,.18), transparent 60%),
+        radial-gradient(55% 70% at 90% 0%, rgba(27,107,130,.35), transparent 55%),
+        linear-gradient(160deg, #093744 0%, #0E4D60 45%, #0B1F26 100%);
+    }
+    .gold-line { background: linear-gradient(90deg, transparent, #C9A227, transparent); }
+
+    /* Subtle pattern dots */
+    .dot-grid {
+      background-image: radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #E4C25B, #C9A227);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0;
+      background: #C9A227; transition: width .3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .card-hover { transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease; }
+    .card-hover:hover { transform: translateY(-8px); }
+
+    ::selection { background: #C9A227; color: #fff; }
+  </style>
+</head>
+
+<body class="font-sans text-ink bg-white antialiased">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <nav class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div id="navInner" class="mt-3 flex items-center justify-between rounded-2xl px-5 py-3 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-soft border border-black/5">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="grid place-items-center w-11 h-11 rounded-xl bg-gradient-to-br from-teal to-teal-light text-gold font-display font-bold text-xl shadow-soft">M</div>
+          <div class="leading-tight">
+            <p class="font-bold text-teal text-[15px] tracking-tight">Moolya India</p>
+            <p class="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold">Private Limited</p>
+          </div>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-ink/80">
+          <a href="#about" class="nav-link hover:text-teal">About</a>
+          <a href="#divisions" class="nav-link hover:text-teal">Divisions</a>
+          <a href="#services" class="nav-link hover:text-teal">Services</a>
+          <a href="#leadership" class="nav-link hover:text-teal">Leadership</a>
+          <a href="#compliance" class="nav-link hover:text-teal">Compliance</a>
+          <a href="#contact" class="nav-link hover:text-teal">Contact</a>
+        </div>
+
+        <a href="#contact" class="hidden lg:inline-flex items-center gap-2 rounded-xl bg-teal px-5 py-2.5 text-sm font-semibold text-white hover:bg-gold hover:text-ink transition-colors duration-300 shadow-soft">
+          Get in touch
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Mobile toggle -->
+        <button id="menuBtn" class="lg:hidden grid place-items-center w-10 h-10 rounded-lg text-teal hover:bg-teal/5" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="lg:hidden hidden mt-2 rounded-2xl bg-white shadow-soft border border-black/5 overflow-hidden">
+        <div class="flex flex-col p-2 text-sm font-medium text-ink/80">
+          <a href="#about" class="px-4 py-3 rounded-lg hover:bg-teal/5 hover:text-teal">About</a>
+          <a href="#divisions" class="px-4 py-3 rounded-lg hover:bg-teal/5 hover:text-teal">Divisions</a>
+          <a href="#services" class="px-4 py-3 rounded-lg hover:bg-teal/5 hover:text-teal">Services</a>
+          <a href="#leadership" class="px-4 py-3 rounded-lg hover:bg-teal/5 hover:text-teal">Leadership</a>
+          <a href="#compliance" class="px-4 py-3 rounded-lg hover:bg-teal/5 hover:text-teal">Compliance</a>
+          <a href="#contact" class="px-4 py-3 rounded-lg bg-teal text-white text-center font-semibold mt-1">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="home" class="relative hero-mesh text-white overflow-hidden">
+    <div class="absolute inset-0 dot-grid opacity-40"></div>
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 pt-40 pb-28 lg:pt-48 lg:pb-36">
+      <div class="max-w-3xl reveal">
+        <span class="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-light">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+          Incorporated 2024 · Registered in West Bengal
+        </span>
+
+        <h1 class="mt-6 font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05]">
+          Moolya India<br /><span class="gradient-text">Private Limited</span>
+        </h1>
+
+        <p class="mt-5 text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
+          A certified multi-division enterprise built on trust, compliance and innovation — delivering
+          excellence across spiritual products, astrology, garments, digital marketing and government services.
+        </p>
+
+        <p class="mt-3 font-display italic text-gold-light text-xl">"Diversified Excellence, Unified Vision"</p>
+
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href="#divisions" class="inline-flex items-center gap-2 rounded-xl bg-gold px-7 py-3.5 font-semibold text-ink hover:bg-gold-light transition-colors shadow-gold">
+            Explore our divisions
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-7 py-3.5 font-semibold text-white hover:bg-white/10 transition-colors">
+            Contact us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Credential strip -->
+    <div class="relative border-t border-white/10 bg-white/[0.03] backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+        <div class="py-6 px-4 reveal">
+          <p class="text-[11px] uppercase tracking-widest text-gold-light/70">CIN</p>
+          <p class="mt-1 font-semibold text-sm md:text-[15px]">U74999UP2024PTC123456</p>
+        </div>
+        <div class="py-6 px-4 reveal">
+          <p class="text-[11px] uppercase tracking-widest text-gold-light/70">GSTIN</p>
+          <p class="mt-1 font-semibold text-sm md:text-[15px]">19AAUCM3819L1ZN</p>
+        </div>
+        <div class="py-6 px-4 reveal">
+          <p class="text-[11px] uppercase tracking-widest text-gold-light/70">PAN</p>
+          <p class="mt-1 font-semibold text-sm md:text-[15px]">AAUCM3819L</p>
+        </div>
+        <div class="py-6 px-4 reveal">
+          <p class="text-[11px] uppercase tracking-widest text-gold-light/70">MSME / Udyam</p>
+          <p class="mt-1 font-semibold text-sm md:text-[15px]">UDYAM-WB-12-0103279</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST BADGES ===================== -->
+  <section class="bg-white py-12">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="flex flex-wrap items-center justify-center gap-4 md:gap-5">
+        <!-- badge template -->
+        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-gold-soft/40 px-5 py-2.5 text-sm font-semibold text-teal">
+          <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.5 1.5l2 4 4.5.6-3.3 3.1.8 4.4L9.5 11l-4 2.1.8-4.4L3 5.6l4.5-.6 2-3.5z"/></svg>
+          ROC Registered
+        </div>
+        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-gold-soft/40 px-5 py-2.5 text-sm font-semibold text-teal">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7 7a1 1 0 01-1.4 0l-3-3a1 1 0 111.4-1.4L9 11.6l6.3-6.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+          GST Compliant
+        </div>
+        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-gold-soft/40 px-5 py-2.5 text-sm font-semibold text-teal">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7 7a1 1 0 01-1.4 0l-3-3a1 1 0 111.4-1.4L9 11.6l6.3-6.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+          MSME Certified
+        </div>
+        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-gold-soft/40 px-5 py-2.5 text-sm font-semibold text-teal">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7 7a1 1 0 01-1.4 0l-3-3a1 1 0 111.4-1.4L9 11.6l6.3-6.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>
+          PAN Verified
+        </div>
+        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-gold-soft/40 px-5 py-2.5 text-sm font-semibold text-teal">
+          <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M10 1l2.6 5.3L18.5 7l-4.2 4.1 1 5.9L10 14.2 4.7 17l1-5.9L1.5 7l5.9-.7L10 1z"/></svg>
+          Companies Act, 2013
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="py-24 bg-gradient-to-b from-white to-gold-soft/20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+        <div class="reveal">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Who we are</p>
+          <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold text-teal leading-tight">A diversified enterprise with a unified vision</h2>
+          <p class="mt-6 text-ink/70 leading-relaxed">
+            Moolya India Private Limited was incorporated on <strong class="text-teal">15 January 2024</strong> under the
+            Companies Act, 2013, and is registered in West Bengal with ROC-Kolkata. From inception we have operated with
+            complete transparency, regulatory compliance and ethical practices.
+          </p>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            Today we operate through specialised divisions, each managed by dedicated professionals who bring focused
+            expertise to their domain — from devotional products to digital marketing and public-sector tenders.
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-3 gap-5">
+            <div class="rounded-2xl bg-white p-5 shadow-soft border border-black/5">
+              <p class="font-display text-3xl font-bold text-teal">6</p>
+              <p class="text-sm text-ink/60 mt-1">Business Divisions</p>
+            </div>
+            <div class="rounded-2xl bg-white p-5 shadow-soft border border-black/5">
+              <p class="font-display text-3xl font-bold text-teal">2024</p>
+              <p class="text-sm text-ink/60 mt-1">Year Established</p>
+            </div>
+            <div class="rounded-2xl bg-white p-5 shadow-soft border border-black/5">
+              <p class="font-display text-3xl font-bold text-teal">100%</p>
+              <p class="text-sm text-ink/60 mt-1">Compliance Focus</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mission / Vision / Values -->
+        <div class="space-y-5">
+          <div class="reveal card-hover rounded-3xl bg-teal text-white p-8 shadow-soft">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg>
+              <h3 class="font-display text-2xl font-bold text-gold">Our Mission</h3>
+            </div>
+            <p class="text-white/85 leading-relaxed">
+              To create sustainable value for our stakeholders through innovative solutions across diverse sectors —
+              upholding the highest standards of integrity, compliance and customer satisfaction.
+            </p>
+          </div>
+          <div class="reveal card-hover rounded-3xl bg-white p-8 shadow-soft border border-gold/20">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              <h3 class="font-display text-2xl font-bold text-teal">Our Vision</h3>
+            </div>
+            <p class="text-ink/70 leading-relaxed">
+              To emerge as a respected multi-division enterprise recognised for operational excellence, innovative
+              thinking and ethical business practices, contributing meaningfully to India's economic growth.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core values -->
+      <div class="mt-20">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="reveal card-hover rounded-2xl bg-white p-7 shadow-soft border-t-4 border-gold">
+            <h4 class="font-display text-xl font-bold text-teal">Integrity</h4>
+            <p class="mt-2 text-sm text-ink/65 leading-relaxed">Upholding the highest ethical standards and transparency with all stakeholders.</p>
+          </div>
+          <div class="reveal card-hover rounded-2xl bg-white p-7 shadow-soft border-t-4 border-gold">
+            <h4 class="font-display text-xl font-bold text-teal">Excellence</h4>
+            <p class="mt-2 text-sm text-ink/65 leading-relaxed">Delivering superior quality and continuously improving across all divisions.</p>
+          </div>
+          <div class="reveal card-hover rounded-2xl bg-white p-7 shadow-soft border-t-4 border-gold">
+            <h4 class="font-display text-xl font-bold text-teal">Innovation</h4>
+            <p class="mt-2 text-sm text-ink/65 leading-relaxed">Embracing technology and creative solutions to stay ahead of the market.</p>
+          </div>
+          <div class="reveal card-hover rounded-2xl bg-white p-7 shadow-soft border-t-4 border-gold">
+            <h4 class="font-display text-xl font-bold text-teal">Trust</h4>
+            <p class="mt-2 text-sm text-ink/65 leading-relaxed">Building lasting relationships through reliability and consistent performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DIVISIONS ===================== -->
+  <section id="divisions" class="py-24 bg-ink text-white relative overflow-hidden">
+    <div class="absolute inset-0 dot-grid opacity-20"></div>
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">What we do</p>
+        <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold">Our Business Divisions</h2>
+        <p class="mt-4 text-white/65">Six specialised divisions delivering excellence across diverse sectors.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Divya Moolya -->
+        <div class="reveal card-hover rounded-3xl bg-white/[0.04] border border-white/10 p-7 hover:border-gold/40">
+          <div class="text-4xl">🪔</div>
+          <h3 class="mt-4 font-display text-2xl font-bold text-gold-light">Divya Moolya</h3>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">Maa Kamakhya Divine Protection Kit — spiritually energised (Siddh) products including Abhimantrit cowrie, Siddh Lal Kapda, energised sindoor and a blessed locket for daily protection.</p>
+          <a href="https://divyamoolya.in/" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-gold-light">
+            Visit website
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-9 9M5 5h4M5 5v14h14v-4"/></svg>
+          </a>
+        </div>
+
+        <!-- Moolya Astro -->
+        <div class="reveal card-hover rounded-3xl bg-white/[0.04] border border-white/10 p-7 hover:border-gold/40">
+          <div class="text-4xl">⭐</div>
+          <h3 class="mt-4 font-display text-2xl font-bold text-gold-light">Moolya Astro</h3>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">Professional astrology consultations, Vedic readings, birth-chart analysis and real-time chat with certified astrologers.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Live Chat</span>
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Horoscope</span>
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Vedic</span>
+          </div>
+        </div>
+
+        <!-- Moolya Garments -->
+        <div class="reveal card-hover rounded-3xl bg-white/[0.04] border border-white/10 p-7 hover:border-gold/40">
+          <div class="text-4xl">👔</div>
+          <h3 class="mt-4 font-display text-2xl font-bold text-gold-light">Moolya Garments</h3>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">Quality apparel trading and distribution with a focus on sustainable fashion and traditional wear for domestic and international markets.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Wholesale</span>
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Retail</span>
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Ethnic Wear</span>
+          </div>
+        </div>
+
+        <!-- Moolya Marketing -->
+        <div class="reveal card-hover rounded-3xl bg-white/[0.04] border border-white/10 p-7 hover:border-gold/40">
+          <div class="text-4xl">📱</div>
+          <h3 class="mt-4 font-display text-2xl font-bold text-gold-light">Moolya Marketing</h3>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">Full-service digital marketing — SEO/SEM, social media management, content marketing, brand strategy and performance analytics.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">SEO/SEM</span>
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Social</span>
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Branding</span>
+          </div>
+        </div>
+
+        <!-- Noor-E-Moolya -->
+        <div class="reveal card-hover rounded-3xl bg-white/[0.04] border border-white/10 p-7 hover:border-gold/40">
+          <div class="text-4xl">🕌</div>
+          <h3 class="mt-4 font-display text-2xl font-bold text-gold-light">Noor-E-Moolya</h3>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">Sacred Barakah Kit prepared with deep remembrance (Dhikr) of Allah — includes Ayatul Kursi engraved coins and alcohol-free attar to inspire faith and spiritual mindfulness.</p>
+          <a href="https://noor-e-moolya-builder-hd8cwzw48e9y2mmd.hostingersite.com/" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-gold-light">
+            Visit website
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-9 9M5 5h4M5 5v14h14v-4"/></svg>
+          </a>
+        </div>
+
+        <!-- Government Tenders -->
+        <div class="reveal card-hover rounded-3xl bg-white/[0.04] border border-white/10 p-7 hover:border-gold/40">
+          <div class="text-4xl">📄</div>
+          <h3 class="mt-4 font-display text-2xl font-bold text-gold-light">Government Tenders</h3>
+          <p class="mt-2 text-sm text-white/70 leading-relaxed">Expert guidance for government tender participation — documentation, compliance management, bid preparation and contract administration.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Bid Management</span>
+            <span class="text-xs rounded-full bg-white/10 px-3 py-1">Compliance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">How we help</p>
+        <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold text-teal">Services we deliver</h2>
+        <p class="mt-4 text-ink/60">Comprehensive solutions across multiple business verticals.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal card-hover rounded-2xl border border-black/5 bg-gradient-to-b from-white to-gold-soft/20 p-7 shadow-soft">
+          <div class="w-12 h-12 grid place-items-center rounded-xl bg-teal/10 text-teal text-2xl">🛒</div>
+          <h3 class="mt-4 font-bold text-lg text-teal">E-commerce Solutions</h3>
+          <p class="mt-2 text-sm text-ink/65 leading-relaxed">Secure online marketplace for collectibles and devotional products with authentication and global shipping.</p>
+        </div>
+        <div class="reveal card-hover rounded-2xl border border-black/5 bg-gradient-to-b from-white to-gold-soft/20 p-7 shadow-soft">
+          <div class="w-12 h-12 grid place-items-center rounded-xl bg-teal/10 text-teal text-2xl">⭐</div>
+          <h3 class="mt-4 font-bold text-lg text-teal">Astrology Services</h3>
+          <p class="mt-2 text-sm text-ink/65 leading-relaxed">Personal consultations, birth-chart analysis, compatibility reports and live chat with certified astrologers.</p>
+        </div>
+        <div class="reveal card-hover rounded-2xl border border-black/5 bg-gradient-to-b from-white to-gold-soft/20 p-7 shadow-soft">
+          <div class="w-12 h-12 grid place-items-center rounded-xl bg-teal/10 text-teal text-2xl">👕</div>
+          <h3 class="mt-4 font-bold text-lg text-teal">Apparel Trading</h3>
+          <p class="mt-2 text-sm text-ink/65 leading-relaxed">Wholesale supply, retail distribution, sustainable fashion lines and custom bulk orders.</p>
+        </div>
+        <div class="reveal card-hover rounded-2xl border border-black/5 bg-gradient-to-b from-white to-gold-soft/20 p-7 shadow-soft">
+          <div class="w-12 h-12 grid place-items-center rounded-xl bg-teal/10 text-teal text-2xl">📈</div>
+          <h3 class="mt-4 font-bold text-lg text-teal">Digital Marketing</h3>
+          <p class="mt-2 text-sm text-ink/65 leading-relaxed">SEO & SEM, social media management, content marketing, brand strategy and performance analytics.</p>
+        </div>
+        <div class="reveal card-hover rounded-2xl border border-black/5 bg-gradient-to-b from-white to-gold-soft/20 p-7 shadow-soft">
+          <div class="w-12 h-12 grid place-items-center rounded-xl bg-teal/10 text-teal text-2xl">📄</div>
+          <h3 class="mt-4 font-bold text-lg text-teal">Government Tender Services</h3>
+          <p class="mt-2 text-sm text-ink/65 leading-relaxed">Tender identification, bid preparation, compliance documentation and post-award support.</p>
+        </div>
+        <div class="reveal card-hover rounded-2xl border border-gold/30 bg-teal p-7 shadow-soft text-white flex flex-col justify-center">
+          <h3 class="font-display text-xl font-bold text-gold">Need something specific?</h3>
+          <p class="mt-2 text-sm text-white/80 leading-relaxed">Talk to our team about how Moolya India can support your business goals.</p>
+          <a href="#contact" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-gold-light">Get in touch
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LEADERSHIP ===================== -->
+  <section id="leadership" class="py-24 bg-gradient-to-b from-gold-soft/20 to-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Leadership</p>
+        <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold text-teal">Board of Directors</h2>
+        <p class="mt-4 text-ink/60">Visionary leadership driving Moolya India forward.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-7">
+        <!-- Director 1 -->
+        <div class="reveal card-hover rounded-3xl bg-white shadow-soft border border-black/5 overflow-hidden">
+          <div class="aspect-[4/3] overflow-hidden bg-teal/5">
+            <img src="https://7965f097fa.imgdist.com/pub/bfra/br1omv5m/zgb/upw/ncm/IMG_1124.PNG" alt="Mukteswar Raul" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Mukteswar+Raul&background=0E4D60&color=fff&size=400'">
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-teal">Mukteswar Raul</h3>
+            <p class="text-sm font-semibold text-gold">Managing Director & CEO</p>
+            <p class="mt-3 text-sm text-ink/65 leading-relaxed">Leads the company's strategic direction, ensuring sustainable growth across all divisions with the highest standards of corporate governance.</p>
+          </div>
+        </div>
+        <!-- Director 2 -->
+        <div class="reveal card-hover rounded-3xl bg-white shadow-soft border border-black/5 overflow-hidden">
+          <div class="aspect-[4/3] overflow-hidden bg-teal/5">
+            <img src="https://ui-avatars.com/api/?name=Ansuman+Sahoo&background=0E4D60&color=fff&size=400" alt="Ansuman Sahoo" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-teal">Ansuman Sahoo</h3>
+            <p class="text-sm font-semibold text-gold">Director of Operations</p>
+            <p class="mt-3 text-sm text-ink/65 leading-relaxed">Oversees day-to-day operations, focusing on operational efficiency, process optimisation and quality assurance across every division.</p>
+          </div>
+        </div>
+        <!-- Director 3 -->
+        <div class="reveal card-hover rounded-3xl bg-white shadow-soft border border-black/5 overflow-hidden">
+          <div class="aspect-[4/3] overflow-hidden bg-teal/5">
+            <img src="https://7965f097fa.imgdist.com/pub/bfra/br1omv5m/tkk/aew/qq4/jabbar%20profosonal%20photo.png" alt="Sk Jabbar" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Sk+Jabbar&background=0E4D60&color=fff&size=400'">
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-teal">Sk Jabbar</h3>
+            <p class="text-sm font-semibold text-gold">Director of Finance & Compliance</p>
+            <p class="mt-3 text-sm text-ink/65 leading-relaxed">Manages the financial health and regulatory compliance of the organisation, ensuring strict adherence to all statutory requirements.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advisors -->
+      <div class="mt-16">
+        <h3 class="text-center font-display text-2xl font-bold text-teal reveal">Advisor Committee</h3>
+        <div class="mt-8 grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div class="reveal flex items-center gap-4 rounded-2xl bg-white shadow-soft border border-black/5 p-5">
+            <img src="https://7965f097fa.imgdist.com/pub/bfra/br1omv5m/qeq/de7/bsl/Untitled%20design%20%287%29.png" alt="Prasanna Parida" class="w-16 h-16 rounded-xl object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Prasanna+Parida&background=C9A227&color=fff&size=200'">
+            <div>
+              <p class="font-bold text-teal">Prasanna Parida</p>
+              <p class="text-sm text-gold font-semibold">Senior Advisor</p>
+            </div>
+          </div>
+          <div class="reveal flex items-center gap-4 rounded-2xl bg-white shadow-soft border border-black/5 p-5">
+            <img src="https://7965f097fa.imgdist.com/pub/bfra/br1omv5m/9ye/ne2/08a/Untitled%20design%20%286%29.png" alt="Brajamohan Mandal" class="w-16 h-16 rounded-xl object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Brajamohan+Mandal&background=C9A227&color=fff&size=200'">
+            <div>
+              <p class="font-bold text-teal">Brajamohan Mandal</p>
+              <p class="text-sm text-gold font-semibold">Senior Advisor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMPLIANCE ===================== -->
+  <section id="compliance" class="py-24 bg-teal text-white relative overflow-hidden">
+    <div class="absolute inset-0 dot-grid opacity-15"></div>
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Transparency</p>
+        <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold">Registration & Compliance</h2>
+        <p class="mt-4 text-white/70">Operating in full compliance with Indian corporate and regulatory laws.</p>
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="reveal rounded-2xl bg-white/[0.06] border border-white/10 p-6">
+          <p class="text-xs uppercase tracking-widest text-gold-light/70">Corporate Identification (CIN)</p>
+          <p class="mt-1.5 font-semibold text-lg">U74999UP2024PTC123456</p>
+        </div>
+        <div class="reveal rounded-2xl bg-white/[0.06] border border-white/10 p-6">
+          <p class="text-xs uppercase tracking-widest text-gold-light/70">GSTIN</p>
+          <p class="mt-1.5 font-semibold text-lg">19AAUCM3819L1ZN</p>
+        </div>
+        <div class="reveal rounded-2xl bg-white/[0.06] border border-white/10 p-6">
+          <p class="text-xs uppercase tracking-widest text-gold-light/70">PAN</p>
+          <p class="mt-1.5 font-semibold text-lg">AAUCM3819L</p>
+        </div>
+        <div class="reveal rounded-2xl bg-white/[0.06] border border-white/10 p-6">
+          <p class="text-xs uppercase tracking-widest text-gold-light/70">TAN</p>
+          <p class="mt-1.5 font-semibold text-lg">CALM32168D</p>
+        </div>
+        <div class="reveal rounded-2xl bg-white/[0.06] border border-white/10 p-6">
+          <p class="text-xs uppercase tracking-widest text-gold-light/70">MSME / Udyam</p>
+          <p class="mt-1.5 font-semibold text-lg">UDYAM-WB-12-0103279</p>
+        </div>
+        <div class="reveal rounded-2xl bg-white/[0.06] border border-white/10 p-6">
+          <p class="text-xs uppercase tracking-widest text-gold-light/70">Registrar / Type</p>
+          <p class="mt-1.5 font-semibold text-lg">ROC-Kolkata · Micro Enterprise</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Info -->
+        <div class="reveal">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Get in touch</p>
+          <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold text-teal leading-tight">Let's work together</h2>
+          <p class="mt-4 text-ink/65 leading-relaxed">We'd love to hear from you. Reach out and our team will respond as soon as possible.</p>
+
+          <div class="mt-9 space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 grid place-items-center rounded-xl bg-teal/10 text-teal flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-teal">Registered Office</p>
+                <p class="text-sm text-ink/65 mt-0.5">Plot No. 274, Tagaria, Contai,<br />Purba Medinipur, West Bengal – 721433</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 grid place-items-center rounded-xl bg-teal/10 text-teal flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-teal">Phone</p>
+                <a href="tel:+915224001234" class="text-sm text-ink/65 mt-0.5 hover:text-teal">+91 522 400 1234</a>
+                <p class="text-xs text-ink/45">Mon–Sat: 9am – 6pm</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 grid place-items-center rounded-xl bg-teal/10 text-teal flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-teal">Email</p>
+                <a href="mailto:info@moolyaindiapvtltd.com" class="text-sm text-ink/65 mt-0.5 hover:text-teal block">info@moolyaindiapvtltd.com</a>
+                <a href="mailto:support@moolyaindiapvtltd.com" class="text-sm text-ink/65 hover:text-teal block">support@moolyaindiapvtltd.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="reveal rounded-3xl bg-gradient-to-b from-gold-soft/30 to-white p-8 shadow-soft border border-gold/20">
+          <h3 class="font-display text-2xl font-bold text-teal">Send us a message</h3>
+          <form id="contactForm" class="mt-6 space-y-4">
+            <div>
+              <label class="block text-sm font-semibold text-ink/70 mb-1.5">Full Name *</label>
+              <input required type="text" name="name" placeholder="Enter your name" class="w-full rounded-xl border-2 border-black/10 px-4 py-3 text-ink focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition" />
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-ink/70 mb-1.5">Email *</label>
+                <input required type="email" name="email" placeholder="your@email.com" class="w-full rounded-xl border-2 border-black/10 px-4 py-3 text-ink focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-ink/70 mb-1.5">Phone</label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" class="w-full rounded-xl border-2 border-black/10 px-4 py-3 text-ink focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-ink/70 mb-1.5">Subject *</label>
+              <input required type="text" name="subject" placeholder="How can we help?" class="w-full rounded-xl border-2 border-black/10 px-4 py-3 text-ink focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-ink/70 mb-1.5">Message *</label>
+              <textarea required name="message" rows="4" placeholder="Tell us more about your inquiry..." class="w-full rounded-xl border-2 border-black/10 px-4 py-3 text-ink focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-teal px-6 py-3.5 font-semibold text-white hover:bg-gold hover:text-ink transition-colors shadow-soft">
+              Send Message
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+            <p id="formNote" class="hidden text-sm text-center font-medium"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-ink text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <!-- Company -->
+        <div>
+          <div class="flex items-center gap-3">
+            <div class="grid place-items-center w-10 h-10 rounded-xl bg-teal text-gold font-display font-bold text-lg">M</div>
+            <p class="font-bold text-gold">Moolya India Pvt Ltd</p>
+          </div>
+          <p class="mt-3 text-[11px] uppercase tracking-[0.15em] text-gold/70 font-semibold">Diversified Excellence, Unified Vision</p>
+          <div class="mt-4 space-y-1 text-sm text-white/60">
+            <p><span class="text-white/90 font-semibold">CIN:</span> U74999UP2024PTC123456</p>
+            <p><span class="text-white/90 font-semibold">ROC:</span> ROC-Kolkata</p>
+            <p><span class="text-white/90 font-semibold">GSTIN:</span> 19AAUCM3819L1ZN</p>
+            <p><span class="text-white/90 font-semibold">PAN:</span> AAUCM3819L</p>
+            <p><span class="text-white/90 font-semibold">TAN:</span> CALM32168D</p>
+          </div>
+        </div>
+
+        <!-- Office -->
+        <div>
+          <p class="font-semibold text-gold mb-4">Registered Office</p>
+          <p class="text-sm text-white/60 leading-relaxed">Plot No. 274, Tagaria,<br />Contai, Purba Medinipur,<br />West Bengal – 721433</p>
+          <p class="mt-3 text-sm text-white/60">+91 522 400 1234</p>
+          <p class="text-sm text-white/60">info@moolyaindiapvtltd.com</p>
+          <p class="text-sm text-white/60">www.moolyaindiapvtltd.com</p>
+        </div>
+
+        <!-- Divisions -->
+        <div>
+          <p class="font-semibold text-gold mb-4">Our Divisions</p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li><a href="#divisions" class="hover:text-gold transition">Divya Moolya</a></li>
+            <li><a href="#divisions" class="hover:text-gold transition">Moolya Astro</a></li>
+            <li><a href="#divisions" class="hover:text-gold transition">Moolya Garments</a></li>
+            <li><a href="#divisions" class="hover:text-gold transition">Moolya Marketing</a></li>
+            <li><a href="#divisions" class="hover:text-gold transition">Noor-E-Moolya</a></li>
+            <li><a href="#divisions" class="hover:text-gold transition">Government Tenders</a></li>
+          </ul>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <p class="font-semibold text-gold mb-4">Quick Links</p>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li><a href="#about" class="hover:text-gold transition">About Company</a></li>
+            <li><a href="#services" class="hover:text-gold transition">Services</a></li>
+            <li><a href="#leadership" class="hover:text-gold transition">Leadership</a></li>
+            <li><a href="#compliance" class="hover:text-gold transition">Compliance</a></li>
+            <li><a href="#contact" class="hover:text-gold transition">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="mt-12 rounded-2xl bg-white/[0.04] border border-white/10 p-6">
+        <p class="text-xs uppercase tracking-widest text-gold font-semibold mb-2">Ownership Disclaimer</p>
+        <p class="text-xs text-white/50 leading-relaxed">
+          Moolya India Private Limited is an independent corporate entity. All divisions operating under the Moolya brand
+          (including Divya Moolya, Moolya Astro, Moolya Garments, Moolya Marketing, Noor-E-Moolya and the Government Tenders
+          Division) are wholly owned business units of Moolya India Private Limited. All business operations are conducted
+          in strict compliance with Indian corporate and regulatory laws.
+        </p>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-white/10 text-center">
+        <p class="text-sm text-white/50">&copy; <span id="year"></span> Moolya India Private Limited. All rights reserved.</p>
+        <p class="text-xs text-white/35 mt-1">CIN: U74999UP2024PTC123456 · Registered in West Bengal, India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Navbar shrink on scroll
+    const navInner = document.getElementById('navInner');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navInner.classList.add('shadow-gold');
+        navInner.classList.remove('bg-white/80');
+        navInner.classList.add('bg-white');
+      } else {
+        navInner.classList.remove('shadow-gold');
+        navInner.classList.add('bg-white/80');
+        navInner.classList.remove('bg-white');
+      }
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i % 4) * 70 + 'ms';
+      io.observe(el);
+    });
+
+    // Contact form (front-end only demo)
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      note.textContent = 'Thank you! Your message has been recorded. (Connect this form to email/a backend to receive submissions.)';
+      note.className = 'text-sm text-center font-medium text-teal';
+      form.reset();
+      setTimeout(() => note.classList.add('hidden'), 6000);
+      note.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
