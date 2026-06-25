@@ -51,20 +51,40 @@
   </script>
 
   <style>
-    html { scroll-behavior: smooth; }
-    body { -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; -webkit-text-size-adjust: 100%; }
+    body { -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; height: auto; }
+
+    /* Fluid type helpers (scale smoothly between phone and desktop) */
+    .fluid-hero   { font-size: clamp(2.25rem, 8vw, 4.5rem); line-height: 1.05; }
+    .fluid-h2     { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.1; }
+    .fluid-next   { font-size: clamp(3rem, 12vw, 4.5rem); line-height: 1; }
 
     /* Reveal on scroll */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
     .reveal.in { opacity: 1; transform: none; }
+    .reveal-left  { opacity: 0; transform: translateX(-30px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal-left.in { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal-right.in { opacity: 1; transform: none; }
+    .reveal-zoom  { opacity: 0; transform: scale(.92); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal-zoom.in { opacity: 1; transform: none; }
 
-    /* Hero radial / mesh background */
+    /* Hero animated mesh background */
     .hero-mesh {
       background:
         radial-gradient(60% 80% at 15% 10%, rgba(201,162,39,.18), transparent 60%),
-        radial-gradient(55% 70% at 90% 0%, rgba(27,107,130,.35), transparent 55%),
+        radial-gradient(55% 70% at 90% 0%, rgba(27,107,130,.40), transparent 55%),
         linear-gradient(160deg, #093744 0%, #0E4D60 45%, #0B1F26 100%);
+      background-size: 200% 200%, 200% 200%, 100% 100%;
+      animation: meshShift 16s ease-in-out infinite;
     }
+    @keyframes meshShift {
+      0%,100% { background-position: 0% 0%, 100% 0%, 0 0; }
+      50%     { background-position: 30% 40%, 70% 30%, 0 0; }
+    }
+
     .gold-line { background: linear-gradient(90deg, transparent, #C9A227, transparent); }
 
     /* Subtle pattern dots */
@@ -74,9 +94,12 @@
     }
 
     .gradient-text {
-      background: linear-gradient(90deg, #E4C25B, #C9A227);
+      background: linear-gradient(90deg, #E4C25B, #C9A227, #E4C25B);
+      background-size: 200% auto;
       -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shimmer 6s linear infinite;
     }
+    @keyframes shimmer { to { background-position: 200% center; } }
 
     .nav-link { position: relative; }
     .nav-link::after {
@@ -85,10 +108,30 @@
     }
     .nav-link:hover::after { width: 100%; }
 
-    .card-hover { transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease; }
-    .card-hover:hover { transform: translateY(-8px); }
+    /* Smooth hover lift for cards */
+    .card-hover { transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease, border-color .45s ease; will-change: transform; }
+    .card-hover:hover { transform: translateY(-10px); }
+
+    /* Gentle float + pulse animations */
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .float { animation: floaty 6s ease-in-out infinite; }
+    .float-slow { animation: floaty 9s ease-in-out infinite; }
+
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+    .anim-nav { animation: fadeInDown .6s ease both; }
+
+    /* Buttons: smooth press + sheen */
+    .btn-press { transition: transform .25s cubic-bezier(.2,.7,.2,1), background-color .3s ease, color .3s ease, box-shadow .3s ease; }
+    .btn-press:hover { transform: translateY(-2px); }
+    .btn-press:active { transform: translateY(0) scale(.98); }
 
     ::selection { background: #C9A227; color: #fff; }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+      .reveal, .reveal-left, .reveal-right, .reveal-zoom { opacity: 1 !important; transform: none !important; }
+    }
   </style>
 </head>
 
@@ -97,7 +140,7 @@
   <!-- ===================== NAVBAR ===================== -->
   <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-5 lg:px-8">
-      <div id="navInner" class="mt-3 flex items-center justify-between rounded-2xl px-5 py-3 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-soft border border-black/5">
+      <div id="navInner" class="anim-nav mt-3 flex items-center justify-between rounded-2xl px-4 sm:px-5 py-3 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-soft border border-black/5">
         <!-- Logo -->
         <a href="#home" class="flex items-center gap-3 group">
           <div class="grid place-items-center w-11 h-11 rounded-xl bg-gradient-to-br from-teal to-teal-light text-gold font-display font-bold text-xl shadow-soft">M</div>
@@ -145,30 +188,30 @@
   <!-- ===================== HERO ===================== -->
   <section id="home" class="relative hero-mesh text-white overflow-hidden">
     <div class="absolute inset-0 dot-grid opacity-40"></div>
-    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 pt-40 pb-28 lg:pt-48 lg:pb-36">
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-36">
       <div class="max-w-3xl reveal">
-        <span class="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-light">
+        <span class="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white/5 px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-gold-light">
           <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
           Incorporated 2024 · Registered in West Bengal
         </span>
 
-        <h1 class="mt-6 font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05]">
+        <h1 class="mt-6 font-display fluid-hero font-bold">
           Moolya India<br /><span class="gradient-text">Private Limited</span>
         </h1>
 
-        <p class="mt-5 text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
+        <p class="mt-5 text-base sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
           A certified multi-division enterprise built on trust, compliance and innovation — delivering
           excellence across spiritual products, astrology, garments, digital marketing and government services.
         </p>
 
-        <p class="mt-3 font-display italic text-gold-light text-xl">"Diversified Excellence, Unified Vision"</p>
+        <p class="mt-3 font-display italic text-gold-light text-lg sm:text-xl">"Diversified Excellence, Unified Vision"</p>
 
-        <div class="mt-9 flex flex-wrap gap-4">
-          <a href="#divisions" class="inline-flex items-center gap-2 rounded-xl bg-gold px-7 py-3.5 font-semibold text-ink hover:bg-gold-light transition-colors shadow-gold">
+        <div class="mt-9 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+          <a href="#divisions" class="btn-press inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-6 sm:px-7 py-3.5 font-semibold text-ink hover:bg-gold-light shadow-gold">
             Explore our divisions
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-7 py-3.5 font-semibold text-white hover:bg-white/10 transition-colors">
+          <a href="#contact" class="btn-press inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 sm:px-7 py-3.5 font-semibold text-white hover:bg-white/10">
             Contact us
           </a>
         </div>
@@ -178,21 +221,21 @@
     <!-- Credential strip -->
     <div class="relative border-t border-white/10 bg-white/[0.03] backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-5 lg:px-8 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
-        <div class="py-6 px-4 reveal">
-          <p class="text-[11px] uppercase tracking-widest text-gold-light/70">CIN</p>
-          <p class="mt-1 font-semibold text-sm md:text-[15px]">U74999UP2024PTC123456</p>
+        <div class="py-5 sm:py-6 px-3 sm:px-4 reveal">
+          <p class="text-[10px] sm:text-[11px] uppercase tracking-widest text-gold-light/70">CIN</p>
+          <p class="mt-1 font-semibold text-[12px] sm:text-sm md:text-[15px] break-words">U74999UP2024PTC123456</p>
         </div>
-        <div class="py-6 px-4 reveal">
-          <p class="text-[11px] uppercase tracking-widest text-gold-light/70">GSTIN</p>
-          <p class="mt-1 font-semibold text-sm md:text-[15px]">19AAUCM3819L1ZN</p>
+        <div class="py-5 sm:py-6 px-3 sm:px-4 reveal">
+          <p class="text-[10px] sm:text-[11px] uppercase tracking-widest text-gold-light/70">GSTIN</p>
+          <p class="mt-1 font-semibold text-[12px] sm:text-sm md:text-[15px] break-words">19AAUCM3819L1ZN</p>
         </div>
-        <div class="py-6 px-4 reveal">
-          <p class="text-[11px] uppercase tracking-widest text-gold-light/70">PAN</p>
-          <p class="mt-1 font-semibold text-sm md:text-[15px]">AAUCM3819L</p>
+        <div class="py-5 sm:py-6 px-3 sm:px-4 reveal">
+          <p class="text-[10px] sm:text-[11px] uppercase tracking-widest text-gold-light/70">PAN</p>
+          <p class="mt-1 font-semibold text-[12px] sm:text-sm md:text-[15px] break-words">AAUCM3819L</p>
         </div>
-        <div class="py-6 px-4 reveal">
-          <p class="text-[11px] uppercase tracking-widest text-gold-light/70">MSME / Udyam</p>
-          <p class="mt-1 font-semibold text-sm md:text-[15px]">UDYAM-WB-12-0103279</p>
+        <div class="py-5 sm:py-6 px-3 sm:px-4 reveal">
+          <p class="text-[10px] sm:text-[11px] uppercase tracking-widest text-gold-light/70">MSME / Udyam</p>
+          <p class="mt-1 font-semibold text-[12px] sm:text-sm md:text-[15px] break-words">UDYAM-WB-12-0103279</p>
         </div>
       </div>
     </div>
@@ -228,10 +271,10 @@
   </section>
 
   <!-- ===================== ABOUT ===================== -->
-  <section id="about" class="py-24 bg-gradient-to-b from-white to-gold-soft/20">
+  <section id="about" class="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white to-gold-soft/20">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-14 items-center">
-        <div class="reveal">
+        <div class="reveal-left">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Who we are</p>
           <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold text-teal leading-tight">A diversified enterprise with a unified vision</h2>
           <p class="mt-6 text-ink/70 leading-relaxed">
@@ -310,7 +353,7 @@
   </section>
 
   <!-- ===================== DIVISIONS ===================== -->
-  <section id="divisions" class="py-24 bg-ink text-white relative overflow-hidden">
+  <section id="divisions" class="py-16 sm:py-20 lg:py-24 bg-ink text-white relative overflow-hidden">
     <div class="absolute inset-0 dot-grid opacity-20"></div>
     <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
       <div class="text-center max-w-2xl mx-auto reveal">
@@ -344,7 +387,7 @@
           </div>
           <div class="relative h-56 md:h-full min-h-[240px] bg-[#00D16B] grid place-items-center overflow-hidden">
             <div class="absolute inset-0 dot-grid opacity-20"></div>
-            <div class="relative grid place-items-center w-32 h-32 md:w-40 md:h-40 rounded-[2rem] bg-[#0F172A] shadow-2xl">
+            <div class="float relative grid place-items-center w-32 h-32 md:w-40 md:h-40 rounded-[2rem] bg-[#0F172A] shadow-2xl">
               <div class="flex items-end">
                 <span class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">next</span>
                 <span class="ml-0.5 mb-1.5 w-3 h-3 md:w-3.5 md:h-3.5 rounded-full bg-[#00D16B]"></span>
@@ -428,7 +471,7 @@
   </section>
 
   <!-- ===================== SERVICES ===================== -->
-  <section id="services" class="py-24 bg-white">
+  <section id="services" class="py-16 sm:py-20 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
       <div class="text-center max-w-2xl mx-auto reveal">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">How we help</p>
@@ -474,7 +517,7 @@
   </section>
 
   <!-- ===================== LEADERSHIP ===================== -->
-  <section id="leadership" class="py-24 bg-gradient-to-b from-gold-soft/20 to-white">
+  <section id="leadership" class="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gold-soft/20 to-white">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
       <div class="text-center max-w-2xl mx-auto reveal">
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Leadership</p>
@@ -542,7 +585,7 @@
   </section>
 
   <!-- ===================== COMPLIANCE ===================== -->
-  <section id="compliance" class="py-24 bg-teal text-white relative overflow-hidden">
+  <section id="compliance" class="py-16 sm:py-20 lg:py-24 bg-teal text-white relative overflow-hidden">
     <div class="absolute inset-0 dot-grid opacity-15"></div>
     <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
       <div class="text-center max-w-2xl mx-auto reveal">
@@ -581,11 +624,11 @@
   </section>
 
   <!-- ===================== CONTACT ===================== -->
-  <section id="contact" class="py-24 bg-white">
+  <section id="contact" class="py-16 sm:py-20 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-5 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12">
         <!-- Info -->
-        <div class="reveal">
+        <div class="reveal-left">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Get in touch</p>
           <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold text-teal leading-tight">Let's work together</h2>
           <p class="mt-4 text-ink/65 leading-relaxed">We'd love to hear from you. Reach out and our team will respond as soon as possible.</p>
@@ -624,7 +667,7 @@
         </div>
 
         <!-- Form -->
-        <div class="reveal rounded-3xl bg-gradient-to-b from-gold-soft/30 to-white p-8 shadow-soft border border-gold/20">
+        <div class="reveal-right rounded-3xl bg-gradient-to-b from-gold-soft/30 to-white p-6 sm:p-8 shadow-soft border border-gold/20">
           <h3 class="font-display text-2xl font-bold text-teal">Send us a message</h3>
           <form id="contactForm" class="mt-6 space-y-4">
             <div>
@@ -739,19 +782,19 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Navbar shrink on scroll
+    // Navbar shrink + elevate on scroll
     const navInner = document.getElementById('navInner');
-    window.addEventListener('scroll', () => {
+    const onScroll = () => {
       if (window.scrollY > 20) {
-        navInner.classList.add('shadow-gold');
-        navInner.classList.remove('bg-white/80');
-        navInner.classList.add('bg-white');
+        navInner.classList.add('shadow-gold', 'bg-white', 'py-2');
+        navInner.classList.remove('bg-white/80', 'py-3');
       } else {
-        navInner.classList.remove('shadow-gold');
-        navInner.classList.add('bg-white/80');
-        navInner.classList.remove('bg-white');
+        navInner.classList.remove('shadow-gold', 'bg-white', 'py-2');
+        navInner.classList.add('bg-white/80', 'py-3');
       }
-    });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
@@ -759,15 +802,20 @@
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-    // Reveal on scroll
+    // Reveal on scroll (all animation variants), with staggered delay per group
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom').forEach((el) => {
       io.observe(el);
+    });
+
+    // Subtle staggered timing for cards that sit in the same grid
+    document.querySelectorAll('.grid').forEach((grid) => {
+      const items = grid.querySelectorAll(':scope > .reveal, :scope > .reveal-zoom');
+      items.forEach((el, i) => { el.style.transitionDelay = Math.min(i, 6) * 80 + 'ms'; });
     });
 
     // Contact form (front-end only demo)
